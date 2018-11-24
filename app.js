@@ -1,5 +1,5 @@
 const express = require('express');
-
+const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 
@@ -29,6 +29,13 @@ let Article = require('./models/article');
 //LOAD VIEW ENGINE
 app.set('views', path.join(__dirname, "views"));
 app.set('view engine', 'pug');
+
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
 
 
 
@@ -68,12 +75,35 @@ app.get('/', (req, res) => {
         ]*/
 });
 
+
+
+
+
+
 //ADD ROUTE
 app.get('/articles/add', (req, res) => {
     res.render('add_article', {
         title: "Add"
     })
 });
+//IF REQUEST IS DIFFERENT WE CAN GO TO SAME URL
+//ADD SUBMIT POST ROUTE
+app.post('/articles/add',(req, res)=>{
+    let article = new Article();
+    article.title = req.body.title;
+    article.author = req.body.author;
+    article.body = req.body.body;
+    article.save((err)=>{
+        if(err){
+            console.log(err);
+            return;
+        }else{
+            res.redirect('/');
+        }
+    });
+});
+
+
 
 
 app.listen(3000, () => {
