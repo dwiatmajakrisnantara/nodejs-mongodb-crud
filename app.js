@@ -32,10 +32,13 @@ app.set('view engine', 'pug');
 
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
  
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+
+//SET PUBLIC FOLDER FOR STATIC ASSETS
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 
@@ -76,6 +79,16 @@ app.get('/', (req, res) => {
 });
 
 
+
+//GET SINGLE ARTICLE
+
+app.get('/article/:id',(req, res)=>{
+    Article.findById(req.params.id,(err, article)=>{
+        res.render('article', {
+            article: article
+        });
+    });
+});
 
 
 
