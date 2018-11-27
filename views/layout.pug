@@ -8,7 +8,7 @@ html
         nav.navbar.navbar-expand-lg.navbar-inverse.bg-dark
             a.navbar-brand(href='#') Knowledge Base
             button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
-                span.navbar-toggler-icon
+                span.navbar-toggler-icon.bg-white
             #navbarNav.collapse.navbar-collapse
                 ul.navbar-nav
                     li.nav-item
@@ -19,11 +19,15 @@ html
                         a.nav-link(href='#') Publish
 
         .container
+            != messages('message', locals)
+            if errors
+                each  error, i in errors
+                    div(class="alert alert-danger") #{error.msg}
             block content
             br
             hr
             footer
                 p Copyright &copy; belong to Shayon, 2018
-        script(src='bower_components/jquery/dist/jquery.js', integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=', crossorigin='anonymous')
-        script(src='bower_components/bootstrap/dist/js/bootstrap.js')
-        script(src='js/main.js')
+        script(src='/bower_components/jquery/dist/jquery.js')
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+        script(src='/js/main.js')
