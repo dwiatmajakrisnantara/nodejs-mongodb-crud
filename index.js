@@ -1,10 +1,27 @@
 const express = require('express');
 const app = express()
 
+
+
+
+
+// MIDDLEWARE SETUP 
+app.set('view engine', 'ejs');
+
+app.use(express.static('public'));
+
+
+
+
+// ROUTING 
 app.get('/', (req, res)=>{
-    res.send('This app is running');
+    res.render('home');
 });
 
+
+
+
+// RUNNING SERVER 
 const PORT = process.env.PORT || 8000;
 
 
