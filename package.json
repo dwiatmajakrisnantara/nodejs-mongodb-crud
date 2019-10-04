@@ -1,0 +1,27 @@
+{
+  "name": "ucl-crud",
+  "version": "1.0.0",
+  "description": "A simple crud system with node js",
+  "main": "index.js",
+  "scripts": {
+    "test": "text"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MdSamsuzzohaShayon/nodejs-knowledge-base.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "crud"
+  ],
+  "author": "md-shayon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MdSamsuzzohaShayon/nodejs-knowledge-base/issues"
+  },
+  "homepage": "https://github.com/MdSamsuzzohaShayon/nodejs-knowledge-base#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
