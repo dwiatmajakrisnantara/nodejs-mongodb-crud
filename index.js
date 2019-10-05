@@ -1,6 +1,15 @@
 const express = require('express');
 const homeRoute = require('./routes/home');
-const app = express()
+const keys = require('./config/keys')
+const app = express();
+const mongoose = require('mongoose');
+
+
+
+// CONNECTING TO MONGODB
+mongoose.connect(keys.mongoURI, {useNewUrlParser: true})
+    .then(console.log("mongodb is connected successfully"))
+    .catch(err=>console.log("An error is occered to connect to db"));
 
 
 
