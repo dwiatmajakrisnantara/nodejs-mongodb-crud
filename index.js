@@ -1,8 +1,13 @@
 const express = require('express');
 const homeRoute = require('./routes/home');
 const keys = require('./config/keys')
-const app = express();
+const club = require('./models/Club');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+
+
+const app = express();
 
 
 
@@ -20,6 +25,12 @@ mongoose.connect(keys.mongoURI, {useNewUrlParser: true})
 app.set('view engine', 'ejs');
 // STATIC FOLDER SETUP
 app.use(express.static('public'));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
 
 
 
