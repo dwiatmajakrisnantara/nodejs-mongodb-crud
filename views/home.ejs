@@ -59,6 +59,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% teams.forEach((team)=>{%>
+                        <tr>
+                            <td><%- team.name %></td>
+                            <td><%- team.players %></td>
+                            <td><%- team.coach %></td>
+                            <td>Edit</td>
+                            <td>Delete</td>
+                        </tr>
+                      <% }); %>
+                </tbody>
+            
+                <!-- <tbody>
                     <tr>
                         <td>Bayern Munich</td>
                         <td>Lawendoski, Coutinho</td>
@@ -80,7 +92,7 @@
                         <td>Edit</td>
                         <td>Delete</td>
                     </tr>
-                </tbody>
+                </tbody> -->
             </table>
         </div>
     </div>

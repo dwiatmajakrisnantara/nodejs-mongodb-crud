@@ -3,32 +3,44 @@ const router = express.Router();
 const Club = require('../models/Club');
 
 
-router.get('/', (req, res)=>{
-    res.render('home');
+router.get('/', (req, res) => {
+    Club.find((err, docs)=>{
+        if(err) throw err;
+        console.log(docs);
+        res.render('home',{teams:docs})        
+    });
 });
 
-router.get('/add', (req, res)=>{
-    res.render('home');
-});
 
 
-router.post('/add', (req, res, next)=>{
+router.post('/add', (req, res, next) => {
 
-    const name = req.body.name;
-    const players = req.body.players;
-    const coach = req.body.coach;
+    const {
+        name,
+        players,
+        coach
+    } = req.body;
     console.log(name, players, coach);
     const club = new Club({
         name,
         players,
         coach
     });
-    club.save();
-    
-    // res.render('home');
+    club.save(err => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/');
+        }
+    });
 
-    res.redirect('/');
-})
+    try {
+        throw new Error('BROKEN')
+    } catch (err) {
+        next(err)
+    }
+});
+
 
 
 module.exports = router;
