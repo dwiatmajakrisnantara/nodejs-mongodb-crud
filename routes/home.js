@@ -12,15 +12,18 @@ router.get('/add', (req, res)=>{
 });
 
 
-router.post('/add', (req, res)=>{
+router.post('/add', (req, res, next)=>{
 
     const name = req.body.name;
     const players = req.body.players;
-    const manager = req.body.manager;
-    console.log(name, players, manager);
-    // const club = new Club({
-
-    // });
+    const coach = req.body.coach;
+    console.log(name, players, coach);
+    const club = new Club({
+        name,
+        players,
+        coach
+    });
+    club.save();
     
     // res.render('home');
 
