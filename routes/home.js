@@ -34,11 +34,11 @@ router.post('/add', (req, res, next) => {
         }
     });
 
-    try {
-        throw new Error('BROKEN')
-    } catch (err) {
-        next(err)
-    }
+    // try {
+    //     throw new Error('BROKEN')
+    // } catch (err) {
+    //     next(err)
+    // }
 });
 
 
