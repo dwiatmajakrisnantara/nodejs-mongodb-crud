@@ -6,9 +6,11 @@ const Club = require('../models/Club');
 router.get('/', (req, res) => {
     Club.find((err, docs)=>{
         if(err) throw err;
-        console.log(docs);
+        // console.log(docs);
         res.render('home',{teams:docs})        
-    });
+    }).catch(err=>{
+        console.log(err);        
+    })
 });
 
 
@@ -39,6 +41,23 @@ router.post('/add', (req, res, next) => {
     // } catch (err) {
     //     next(err)
     // }
+});
+
+
+router.get('/edit/:id', (req,res, next)=>{
+
+    try {
+        Club.findByIdAndUpdate({_id: req.params.id}, (err)=>{
+        res.render('home', {});
+        });
+        throw new Error('BROKEN');
+        
+      } catch (err) {
+        next(err)
+      }
+
+    console.log("directing edit");
+    
 });
 
 

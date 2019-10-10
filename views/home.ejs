@@ -24,19 +24,19 @@
         <br>
         <br>
         <div class="ui container">
-            <form action="/add" class="ui form" method="POST">
+            <form id="form" action="/add" class="ui form" method="POST">
                 <div class="three fields">
                     <div class="field">
                         <label for="label" class="ui header green">Enter club name</label>
-                        <input type="text" name="name" placeholder="Enter club name">
+                        <input type="text" name="name" placeholder="Enter club name" value=""  id="name">
                     </div>
                     <div class="field">
                         <label for="label" class="ui header green">Enter players name</label>
-                        <input type="text" name="players" placeholder="Enter club name">
+                        <input type="text" name="players" placeholder="Enter club name" value="" id="players">
                     </div>
                     <div class="field">
                         <label for="label" class="ui header green">Enter coach name</label>
-                        <input type="text" name="coach" placeholder="Enter club name">
+                        <input type="text" name="coach" placeholder="Enter club name" value="" id="coach">
                     </div>
                 </div>
                 <!-- <div class=" one fields"> -->
@@ -48,24 +48,25 @@
             <br>
             <br>
             <br>
-            <table class="ui table green">
+            
+            <table class="ui table green" >
                 <thead>
                     <tr>
                         <th>Club Name</th>
                         <th>Players</th>
                         <th>Coach</th>
-                        <th>Edit</th>
+                        <th >Edit</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% teams.forEach((team)=>{%>
                         <tr>
-                            <td><%- team.name %></td>
-                            <td><%- team.players %></td>
-                            <td><%- team.coach %></td>
-                            <td>Edit</td>
-                            <td>Delete</td>
+                            <td id="teamName"><%- team.name %></td>
+                            <td id="teamPlayers"><%- team.players %></td>
+                            <td id="teamCoach"><%- team.coach %></td>
+                            <td><a class="ui button green editBtn" href="/edit/<%= team._id %>"><i class="edit white icon"></i></a></td>
+                            <td><a class="ui button green actnBtn" href="/edit/<%= team._id %>"><i id="delete" class="minus red icon"></i></a></td>
                         </tr>
                       <% }); %>
                 </tbody>
@@ -96,6 +97,7 @@
             </table>
         </div>
     </div>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
