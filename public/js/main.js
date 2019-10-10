@@ -48,6 +48,7 @@ const names = [name, players, coach];
 
 // console.log(form.attributes.action.value);
 let edit_url = url + "edit/";
+
 valueChange();
 
 function valueChange() {

@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CRUD</title>
-    <link rel="stylesheet" href="css/semantic.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/semantic.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <div class="site">
         <div class="ui massive menu">
             <div class="ui container">
-                <div class="item">Home</div>
+                <div class="item"><a href="/">Home</a></div>
                 <div class="item">About</div>
                 <div class="item">Contact</div>
                 <div class="item">Blog</div>
@@ -32,11 +32,11 @@
                     </div>
                     <div class="field">
                         <label for="label" class="ui header green">Enter players name</label>
-                        <input type="text" name="players" placeholder="Enter club name" value="" id="players">
+                        <input type="text" name="players" placeholder="Enter players name" value="" id="players">
                     </div>
                     <div class="field">
                         <label for="label" class="ui header green">Enter coach name</label>
-                        <input type="text" name="coach" placeholder="Enter club name" value="" id="coach">
+                        <input type="text" name="coach" placeholder="Enter coach name" value="" id="coach">
                     </div>
                 </div>
                 <!-- <div class=" one fields"> -->
@@ -66,7 +66,7 @@
                             <td id="teamPlayers"><%- team.players %></td>
                             <td id="teamCoach"><%- team.coach %></td>
                             <td><a class="ui button green editBtn" href="/edit/<%= team._id %>"><i class="edit white icon"></i></a></td>
-                            <td><a class="ui button green actnBtn" href="/edit/<%= team._id %>"><i id="delete" class="minus red icon"></i></a></td>
+                            <td><a class="ui button green actnBtn" href="/<%= team._id %>"><i id="delete" class="minus red icon"></i></a></td>
                         </tr>
                       <% }); %>
                 </tbody>
@@ -97,7 +97,6 @@
             </table>
         </div>
     </div>
-    <script src="js/main.js"></script>
 </body>
 
 </html>
